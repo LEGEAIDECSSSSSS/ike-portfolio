@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Attempts Outside Mexico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #004d40;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #004d40;
+            margin-bottom: 1rem;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-left: 4px solid #004d40;
+            overflow-x: auto;
+        }
+        footer {
+            text-align: center;
+            background-color: #004d40;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        a {
+            color: #00695c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Login Attempts Outside Mexico</h1>
+    </header>
+
+    <div class="container">
+        <h2>Project Overview</h2>
+        <p>This project analyzed login attempts outside of Mexico to identify potentially unauthorized access. By filtering out logins from locations other than Mexico, the organization could monitor for suspicious activity.</p>
+
+        <h2>SQL Query</h2>
+        <pre>
+SELECT *
+FROM log_in_attempts
+WHERE country NOT LIKE 'MEX%';
+        </pre>
+
+        <h2>Explanation</h2>
+        <p>The query retrieves all records from the <code>log_in_attempts</code> table where:</p>
+        <ul>
+            <li>The <code>country</code> does not start with <code>'MEX'</code>, which includes variations like "MEXICO".</li>
+        </ul>
+        <p>This filtering ensures only logins outside of Mexico are analyzed.</p>
+
+        <h2>Results</h2>
+        <p>The query identified several login attempts from locations outside of Mexico. These were flagged for further investigation.</p>
+
+        <h2>Impact</h2>
+        <p>The organization used this analysis to:</p>
+        <ul>
+            <li>Detect unauthorized access from foreign locations.</li>
+            <li>Strengthen geo-based access controls to improve security.</li>
+        </ul>
+
+        <a href="../index.html">&larr; Back to Portfolio</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Permissions in Linux</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #004d40;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #004d40;
+            margin-bottom: 1rem;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-left: 4px solid #004d40;
+            overflow-x: auto;
+        }
+        footer {
+            text-align: center;
+            background-color: #004d40;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        a {
+            color: #00695c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>File Permissions in Linux</h1>
+    </header>
+
+    <div class="container">
+        <h2>Project Overview</h2>
+        <p>This project demonstrates how file and directory permissions were analyzed and updated to enhance system security. Using Linux commands, such as <code>ls -la</code> and <code>chmod</code>, permissions were tailored to organizational needs.</p>
+
+        <h2>Command Examples</h2>
+        <pre>
+# Check file permissions
+ls -la projects/
+
+# Remove write access for others on project_k.txt
+chmod o-w project_k.txt
+
+# Update permissions for hidden files
+chmod u-w,g-w,g+r .project_x.txt
+        </pre>
+
+        <h2>Explanation</h2>
+        <p>Steps included:</p>
+        <ul>
+            <li>Checking current permissions using <code>ls -la</code> to identify unauthorized access.</li>
+            <li>Modifying permissions with <code>chmod</code> to remove or add access for specific user groups.</li>
+        </ul>
+
+        <h2>Results</h2>
+        <p>The following outcomes were achieved:</p>
+        <ul>
+            <li>Unauthorized write access was removed from sensitive files.</li>
+            <li>Permissions were optimized to align with security policies.</li>
+        </ul>
+
+        <h2>Impact</h2>
+        <p>By updating file permissions, the organization reduced its risk of data breaches and ensured compliance with security standards.</p>
+
+        <a href="../index.html">&larr; Back to Portfolio</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>

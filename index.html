@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
+
+     
+    <script>
+        function toggleQuery(id) {
+            var query = document.getElementById(id);
+            query.style.display = (query.style.display === "none") ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Okezie Ikechukwu’s Cybersecurity Portfolio</h1>
+        <p>Practical Projects & Case Studies in Incident Response, Data Analysis, and Secure Systems</p>
+    </header>
+
+    <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+
+            <div class="card">
+                <h3>Applying Filters to SQL Queries</h3>
+                <p>
+                    Data security and access control are critical aspects of any organization's IT infrastructure.
+                    In this project, I utilized SQL queries to filter and analyze login attempts and employee data
+                    to enhance security monitoring and facilitate system updates. By applying filters with SQL operators
+                    such as <strong>AND</strong>, <strong>OR</strong>, <strong>NOT</strong>, and <strong>LIKE</strong>, I was able to extract
+                    meaningful insights, detect suspicious activities, and streamline administrative tasks. The following sections
+                    detail the various filtering techniques used and their practical applications in real-world scenarios.
+                </p>                
+
+                <h2>Summary</h2>
+                <ol>
+                    <li>Failed Login Attempts After Hours</li>
+                    <p><strong>Problem Statement:</strong> A potential security breach may have occurred outside of regular working hours (after 18:00). To investigate unauthorized access attempts, I needed to filter out all failed login attempts that took place after business hours.</p>
+                    <ul>
+                        <li>Used WHERE clause with AND to find failed logins after 18:00.</li>
+                        <li>Query filters unsuccessful attempts for security review.</li>
+                        <p><a href="#" onclick="toggleQuery('query1'); return false;">Read Full Query →</a></p>
+                        <pre id="query1" style="display:none;">
+SELECT * FROM log_in_attempts 
+WHERE login_time > '18:00' AND success = FALSE;
+
+<strong>Explanation:</strong> 
+- This query filters login attempts that:
+- Happened <strong>after 18:00</strong>.
+- Were <strong>unsuccessful</strong>.
+- This helps identify unauthorized access attempts outside working hours.
+                        </pre>
+                    </ul>
+
+                    <li>Login Attempts on Specific Dates</li>
+                    <p><strong>Problem Statement:</strong> A suspicious event was reported on May 9, 2022. To analyze any potential security threats, I needed to retrieve all login attempts that occurred on May 9, 2022, and the day before (May 8, 2022), to check for any unusual activity leading up to the event.</p>
+                    <ul>
+                        <li>Investigated suspicious logins on May 8–9, 2022.</li>
+                        <li>Used WHERE clause with OR to extract logs.</li>
+                        <p><a href="#" onclick="toggleQuery('query2'); return false;">Read Full Query →</a></p>
+                        <pre id="query2" style="display:none;">
+SELECT * FROM log_in_attempts 
+WHERE login_date = '2022-05-09' OR login_date = '2022-05-08'; 
+
+<strong>Explanation:</strong>
+- This query extracts all login attempts that occurred on either of the two 
+  specified dates using the <strong>OR</strong> operator. 
+- This helps track any unusual login patterns leading up to the event.
+                        </pre>  
+                    </ul>      
+
+                    <li>Login Attempts Outside Mexico</li>
+                    <p><strong>Problem Statement:</strong> Unauthorized logins from foreign locations posed a security risk to the organization. I needed to extract all login attempts that occurred outside of Mexico to identify potential account compromise or unauthorized access from international locations.</p>
+                    <ul>
+                        <li>Flagged all non-Mexico logins for investigation.</li>
+                        <li>Used WHERE clause with NOT LIKE to extract logs.</li>
+                        <p><a href="#" onclick="toggleQuery('query3'); return false;">Read Full Query →</a></p>
+                        <pre id="query3" style="display:none;">
+SELECT * FROM log_in_attempts 
+WHERE country NOT LIKE 'MEX%'; 
+
+<strong>Explanation:</strong> 
+- This query selects all login attempts excluding those from Mexico. 
+- The NOT LIKE 'MEX%' condition ensures that logins from "MEX" and "MEXICO" are 
+  filtered out, leaving only logins from other countries for further investigation.
+                        </pre>  
+                    </ul>
+
+                    <li>Filtering Employees by Department</li>
+                    <p><strong>Problem Statement:</strong> The IT team needed to update computers for employees in <strong>Marketing, Finance, Sales, and IT</strong>. Different security updates were required based on department.</p>
+                    <ul>
+                        <li>Retrieved lists of employees in Marketing, Finance, Sales, and IT for system updates.</li>
+                        <li>Used WHERE, LIKE, AND, and OR operators.</li>
+                        <p><a href="#" onclick="toggleQuery('query4'); return false;">Read Full Query →</a></p>
+                        <pre id="query4" style="display: none;">
+SELECT * FROM employees 
+WHERE department IN ('Marketing', 'Finance', 'Sales', 'IT');
+
+<strong>Explanation:</strong>
+- Uses the <strong>IN</strong> operator to retrieve employees from multiple departments at once.
+- Instead of multiple <strong>OR</strong> conditions, <strong>IN</strong> makes the query more readable and efficient.
+- Ensures that only employees from these four departments are included for security updates.
+                        </pre>        
+                    </ul>
+                </ol>
+
+                <h2>Conclusion</h2>
+                <p>
+                    In this project, I demonstrated how to apply SQL filtering techniques to extract security-critical data efficiently.
+                    By utilizing SQL operators like <strong>AND</strong>, <strong>OR</strong>, <strong>NOT</strong>, and <strong>LIKE</strong>, I was able to identify suspicious login attempts, analyze login trends,
+                    and retrieve employee data based on departmental needs. These queries play a crucial role in strengthening security monitoring,
+                    helping organizations proactively respond to potential threats and maintain data integrity.
+                </p>
+                <p>
+                    For a more detailed breakdown of the project and complete documentation, you can view the full report 
+                    <a href="documents/APPLYING FILTERS TO SQL QUERIES DOCUMENTATION.pdf" target="_blank">here</a>.               
+                </p>
+                <div class="card">
+                    <h3>File Permissions in Linux</h3>
+                    <p>
+                        Managing file permissions is essential for securing sensitive data. In this project, 
+                        I used Linux commands to check and modify file permissions, ensuring proper authorization. 
+                        Below are the key steps I took.
+                    </p>
+                
+                    <h2>Summary</h2>
+                    <ol>
+                        <li>Checking File and Directory Permissions</li>
+                        <p><strong>Problem Statement:</strong> I needed to verify permissions on important files in the projects directory.</p>
+                        <ul>
+                            <li>Used `ls -la` to check file and directory permissions.</li>
+                            <p><a href="#" onclick="toggleQuery('linux1'); return false;">Read Full Command →</a></p>
+                            <pre id="linux1" style="display:none;">
+                ls -la
+                <strong>Explanation:</strong>
+                - Lists all files and directories with their permissions.
+                - Reveals hidden files by using the `-a` flag.
+                            </pre>
+                        </ul>
+                
+                        <li>Changing File Permissions</li>
+                        <p><strong>Problem Statement:</strong> Some files allowed unwanted write access. I needed to modify their permissions.</p>
+                        <ul>
+                            <li>Used `chmod` to remove write permissions from unauthorized users.</li>
+                            <p><a href="#" onclick="toggleQuery('linux2'); return false;">Read Full Command →</a></p>
+                            <pre id="linux2" style="display:none;">
+                chmod o-w project_k.txt
+                <strong>Explanation:</strong>
+                - This command removes write (`w`) permission from "others".
+                - Ensures that only the owner and group can modify the file.
+                            </pre>
+                        </ul>
+                
+                        <li>Restricting Access to a Directory</li>
+                        <p><strong>Problem Statement:</strong> Only `researcher2` should access the `drafts` directory.</p>
+                        <ul>
+                            <li>Used `chmod` to remove execute permissions from unauthorized users.</li>
+                            <p><a href="#" onclick="toggleQuery('linux3'); return false;">Read Full Command →</a></p>
+                            <pre id="linux3" style="display:none;">
+                chmod g-x,o-x drafts/
+                <strong>Explanation:</strong>
+                - Removes execute permissions (`x`) for group and others.
+                - Only the owner (`researcher2`) retains access.
+                            </pre>
+                        </ul>
+                    </ol>
+                
+                    <h2>Conclusion</h2>
+                    <p>
+                        This project highlights how file permissions in Linux can enhance security. By checking permissions,
+                        modifying access levels, and enforcing proper restrictions, I ensured sensitive data remained protected.
+                    </p>
+                    <p>
+                        For full documentation, view the detailed report 
+                        <a href="documents/FILE PERMISSIONS IN LINUX DOCUMENTATION.pdf" target="_blank">here</a>.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Incident Response Case Studies</h3>
+                    <p>Below are detailed case studies showcasing my incident handling and response processes in real-world scenarios.</p>
+                  
+                    <!-- Case Study 1 -->
+                    <details>
+                      <summary><strong>Case Study 1: Ransomware Attack on a Healthcare Company</strong></summary>
+                      <p><strong>Overview:</strong> A healthcare organization experienced a ransomware attack that encrypted critical files, disrupting operations. The incident response team had to quickly assess the situation, contain the threat, and determine the best course of action.</p>
+                      <p><strong>Incident Breakdown:</strong></p>
+                      <ul>
+                        <li><strong>Detection & Analysis:</strong> The attack was detected when multiple employees were locked out of systems, and ransom notes demanding payment appeared.</li>
+                        <li><strong>Containment & Eradication:</strong> Infected systems were shut down, and external cybersecurity experts were engaged to assist.</li>
+                        <li><strong>Recovery:</strong> With backups unavailable, the organization had to choose between paying the ransom or pursuing alternative recovery methods.</li>
+                      </ul>
+                      <p><strong>Lessons Learned & Preventive Measures:</strong></p>
+                      <ul>
+                        <li>Implement a robust backup strategy to prevent data loss.</li>
+                        <li>Conduct regular phishing awareness training for all employees.</li>
+                        <li>Enforce network segmentation to limit the spread of malware.</li>
+                      </ul>
+                    </details>
+                  
+                    <!-- Case Study 2 -->
+                    <details>
+                      <summary><strong>Case Study 2: Network Traffic Analysis with Wireshark</strong></summary>
+                      <p><strong>Overview:</strong> Network traffic was analyzed using <strong>Wireshark</strong> to identify suspicious activity and better understand packet flow.</p>
+                      <p><strong>Analysis & Findings:</strong></p>
+                      <ul>
+                        <li>Real-time capture of network traffic provided valuable data.</li>
+                        <li>Several unknown IP addresses were identified communicating with internal servers.</li>
+                        <li>Unauthorized HTTP traffic was flagged, suggesting potential data exfiltration.</li>
+                      </ul>
+                      <p><strong>Challenges & Key Takeaways:</strong></p>
+                      <ul>
+                        <li>The large volume of captured data required effective filtering to identify threats.</li>
+                        <li>Utilizing Wireshark’s filters was essential for narrowing down the results.</li>
+                        <li>Hands-on experience with packet capture tools is crucial for network security analysis.</li>
+                      </ul>
+                    </details>
+                  
+                    <!-- Case Study 3 -->
+                    <details>
+                      <summary><strong>Case Study 3: Capturing and Analyzing Network Traffic with Tcpdump</strong></summary>
+                      <p><strong>Overview:</strong> In this investigation, <strong>Tcpdump</strong> was used to capture and analyze network traffic, challenging me to master command-line syntax for effective data extraction.</p>
+                      <p><strong>Key Findings:</strong></p>
+                      <ul>
+                        <li>Network packets were successfully captured and filtered to show relevant traffic.</li>
+                        <li>Anomalies in network traffic patterns were identified.</li>
+                        <li>Initial challenges with command syntax were overcome with practice and troubleshooting.</li>
+                      </ul>
+                      <p><strong>Lessons Learned:</strong></p>
+                      <ul>
+                        <li>Mastering command-line tools like Tcpdump requires practice and patience.</li>
+                        <li>Effective filtering is essential for focusing on security-critical traffic.</li>
+                        <li>Command-line tools can complement GUI-based tools like Wireshark in security analysis.</li>
+                      </ul>
+                    </details>
+                  
+                    <!-- Case Study 4 -->
+                    <details>
+                      <summary><strong>Case Study 4: Investigating a Suspicious File Hash with VirusTotal</strong></summary>
+                      <p><strong>Overview:</strong> When a financial services company received an alert about a potentially malicious email attachment, VirusTotal was used to analyze the file hash for known malware indicators.</p>
+                      <p><strong>Investigation & Findings:</strong></p>
+                      <ul>
+                        <li>The file hash was analyzed using VirusTotal and compared against multiple malware databases.</li>
+                        <li>The file was flagged as a trojan by several antivirus engines.</li>
+                        <li>The incident was traced back to a phishing attack targeting employees.</li>
+                      </ul>
+                      <p><strong>Prevention Strategies:</strong></p>
+                      <ul>
+                        <li>Enhance security awareness training to help employees recognize phishing attempts.</li>
+                        <li>Implement robust email filtering solutions to block suspicious attachments.</li>
+                        <li>Enforce endpoint security measures to prevent the execution of unverified files.</li>
+                      </ul>
+                    </details>
+                  
+                    <!-- Reflections & Growth -->
+                    <h4>Reflections & Growth</h4>
+                    <p><strong>Challenges Faced:</strong></p>
+                    <ul>
+                      <li>Learning command-line tools like Tcpdump presented initial challenges due to syntax errors.</li>
+                      <li>Managing large volumes of network traffic required the development of effective filtering techniques.</li>
+                      <li>Understanding the full lifecycle of incident response deepened my strategic approach to handling threats.</li>
+                    </ul>
+                    <p><strong>Key Takeaways:</strong></p>
+                    <ul>
+                      <li>A structured approach—from detection to recovery—is essential for effective incident handling.</li>
+                      <li>Continuous learning and hands-on practice are critical for mastering cybersecurity tools.</li>
+                      <li>Preventive strategies, including employee training and proactive monitoring, significantly reduce risks.</li>
+                    </ul>
+                    <p><strong>Next Steps:</strong> To further enhance my skills, I plan to gain more experience with SIEM tools and deepen my knowledge of malware analysis techniques.</p>
+                  </div>
+                  <div class="card">
+                    <h3>Update a File through a Python Algorithm</h3>
+                    <p>
+                      At my organization, access to restricted content is controlled by an allow list stored in "allow_list.txt". I developed a Python algorithm to automate updating this file by removing IP addresses found in a separate remove list.
+                    </p>
+                  
+                    <h4>Project Description</h4>
+                    <p>
+                      The algorithm follows these key steps:
+                    </p>
+                    <ol>
+                      <li>
+                        <strong>Open the File:</strong> Use Python's <code>open()</code> function in a <code>with</code> statement (read mode) to access the file contents.
+                      </li>
+                      <li>
+                        <strong>Read the Contents:</strong> Convert the file's content into a string using the <code>.read()</code> method.
+                      </li>
+                      <li>
+                        <strong>Convert to a List:</strong> Split the string into a list of IP addresses with the <code>.split()</code> method.
+                      </li>
+                      <li>
+                        <strong>Iterate Through the Remove List:</strong> Loop through the remove list and check if each IP exists in the allow list.
+                      </li>
+                      <li>
+                        <strong>Remove Matching IPs:</strong> Remove any IP addresses found in both lists using the <code>.remove()</code> method.
+                      </li>
+                      <li>
+                        <strong>Update the File:</strong> Convert the updated list back to a string with the <code>.join()</code> method and overwrite the original file using <code>open()</code> in write mode.
+                      </li>
+                    </ol>
+                  
+                    <h4>Key Code Snippets</h4>
+                    <p><strong>Opening and Reading the File:</strong></p>
+                    <a href="#" onclick="toggleQuery('pythonSnippet1'); return false;">Read Code Snippet</a>
+                    <pre id="pythonSnippet1" style="display:none;">
+                  import_file = "allow_list.txt"
+                  with open(import_file, "r") as file:
+                      ip_addresses = file.read()
+                    </pre>
+                  
+                    <p><strong>Updating the Allow List:</strong></p>
+                    <a href="#" onclick="toggleQuery('pythonSnippet2'); return false;">Read Code Snippet</a>
+                    <pre id="pythonSnippet2" style="display:none;">
+                  # Convert string to list
+                  ip_addresses = ip_addresses.split()
+                  
+                  # Iterate through the remove list and remove matching IP addresses
+                  for ip in remove_list:
+                      if ip in ip_addresses:
+                          ip_addresses.remove(ip)
+                  
+                  # Convert list back to string and update the file
+                  ip_addresses = "\n".join(ip_addresses)
+                  with open(import_file, "w") as file:
+                      file.write(ip_addresses)
+                    </pre>
+                  
+                    <p>
+                      This Python algorithm automates updating the allow list to ensure that only authorized IP addresses remain, thereby improving content security.
+                    </p>
+                    <p>
+                      <a href="documents/Update-a-file-through-a-Python-algorithm.pdf" target="_blank">view full project documentation</a>
+                    </p>
+                  </div>
+                  <div class="card">
+                    <h3>Fraud Detection Dashboard</h3>
+                    <p>
+                      This project is a comprehensive dashboard that visualizes fraudulent transaction data across various dimensions. Developed using Splunk, it leverages powerful analytics and visualization capabilities to identify trends and patterns in fraudulent activity, helping organizations pinpoint vulnerabilities.
+                    </p>
+                    <h4>Key Features:</h4>
+                    <ul>
+                      <li>Count by Category of Fraudulent Transactions</li>
+                      <li>Analysis of Fraudulent Payments</li>
+                      <li>Visualization of Fraud by Age and Merchant</li>
+                      <li>Detailed Tables and Charts for Transaction Analysis</li>
+                      <li>Trends Over Time (Monthly Fraud Steps)</li>
+                      <li>Gender-Based Fraud Analysis</li>
+                    </ul>
+                    <p>
+                      The dashboard is designed to help stakeholders quickly identify anomalies and make data-driven decisions to mitigate risk.
+                    </p>
+                    <p>
+                      <a href="documents/Fraud Detection Dashboard.pdf" target="_blank">View Full Dashboard Documentation</a>
+                    </p>
+                  </div>
+                  <div class="card">
+                    <h3>Penetration Testing Report</h3>
+                    <p>
+                      This report details the results of a penetration test on the "Basic" web challenge from HackThisSite.org. The test uncovered a range of vulnerabilities—from hardcoded passwords and missing password files to command and SSI injections, as well as insecure cookie handling. Below is a summary of the key vulnerabilities and examples of the techniques used.
+                    </p>
+                    <h4>Key Vulnerabilities & Examples:</h4>
+                    <ul>
+                      <li>
+                        <strong>Hardcoded Passwords:</strong> The source code revealed passwords in plain text.
+                        <a href="#" onclick="toggleQuery('snippet1'); return false;">View Example Snippet</a>
+                        <pre id="snippet1" style="display:none;">
+                  Example: 
+                  <!-- In the source code -->
+                  Password: "admin123"
+                        </pre>
+                      </li>
+                      <li>
+                        <strong>Missing Password File:</strong> The absence of a proper password file allowed successful authentication even with an empty password.
+                        <a href="#" onclick="toggleQuery('snippet2'); return false;">View Example Snippet</a>
+                        <pre id="snippet2" style="display:none;">
+                  Example: 
+                  Submitting an empty password field bypassed login validation.
+                        </pre>
+                      </li>
+                      <li>
+                        <strong>Command Injection:</strong> Input fields were exploited to execute arbitrary system commands.
+                        <a href="#" onclick="toggleQuery('snippet3'); return false;">View Example Snippet</a>
+                        <pre id="snippet3" style="display:none;">
+                  Example: 
+                  Input: "7; ls"
+                  Outcome: Executes "ls" command to list directory contents.
+                        </pre>
+                      </li>
+                      <li>
+                        <strong>SSI Injection:</strong> Server Side Include (SSI) vulnerabilities allowed attackers to view sensitive file directories.
+                        <a href="#" onclick="toggleQuery('snippet4'); return false;">View Example Snippet</a>
+                        <pre id="snippet4" style="display:none;">
+                  Example: 
+                  Injection: <!--#exec cmd="ls ../"-->
+                  Outcome: Reveals parent directory structure.
+                        </pre>
+                      </li>
+                      <li>
+                        <strong>Cookie Manipulation:</strong> Insecure cookie handling enabled session hijacking.
+                        <a href="#" onclick="toggleQuery('snippet5'); return false;">View Example Snippet</a>
+                        <pre id="snippet5" style="display:none;">
+                  Example: 
+                  Modifying the "level10_authorized" cookie value from "no" to "yes" bypassed authentication.
+                        </pre>
+                      </li>
+                    </ul>
+                    <p>
+                      For a comprehensive analysis of all vulnerabilities and detailed remediation recommendations, please refer to the full report.
+                    </p>
+                    <p>
+                      <a href="documents/Penetration Testing Report.pdf" target="_blank">View Full Report</a>
+                    </p>
+                  </div>
+                           
+            </div>
+        </section>
+        <section id="about" class="section">
+          <h2>About Me</h2>
+          <p>
+            Hi, I'm Emuedo Crosdel—a dedicated cybersecurity professional with a passion for incident response, data analysis, and secure systems design. My portfolio showcases hands-on experience with SQL, Linux, Python, and data visualization, all aimed at strengthening system security.
+          </p>
+          <p>
+            I thrive on solving real-world challenges, whether it's refining SQL queries to detect suspicious logins or developing Python algorithms to automate network access updates. I'm committed to continuously learning and enhancing my technical skills to keep up with the evolving landscape of cybersecurity.
+          </p>
+          <p>
+            Through my work, I aim to contribute to building robust and secure systems that protect critical data. I'm excited to share my journey and projects, and I look forward to exploring innovative solutions to complex security challenges.
+          </p>
+        </section>
+        
+
+            <section id="contact" class="section">
+              <h2>Contact</h2>
+              <p>If you'd like to collaborate or learn more about my work, feel free to reach out!</p>
+              <div class="contact-info">
+                <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <a href="mailto:crosdel16@gmail.com">crosdel16@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                  <i class="fab fa-linkedin"></i>
+                  <a href="https://www.linkedin.com/in/crosdel-emuedo-486856277" target="_blank">LinkedIn</a>
+                </div>
+              </div>
+            </section>
+            
+        </section>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <p>&copy; 2025 Okezie Ikechukwu. All rights reserved.</p>
+    <p class="designer-note">Website designed and developed by Okezie Ikechukwu.</p>
+  </footer>
+  
+</html>
+
+
+
+  
+
+    

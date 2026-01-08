@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After-Hours Failed Login Attempts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #004d40;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #004d40;
+            margin-bottom: 1rem;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-left: 4px solid #004d40;
+            overflow-x: auto;
+        }
+        footer {
+            text-align: center;
+            background-color: #004d40;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        a {
+            color: #00695c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>After-Hours Failed Login Attempts</h1>
+    </header>
+
+    <div class="container">
+        <h2>Project Overview</h2>
+        <p>This project focused on identifying potential security incidents by filtering failed login attempts that occurred after business hours (after 18:00). Using SQL queries, I analyzed login data to pinpoint suspicious activities.</p>
+
+        <h2>SQL Query</h2>
+        <pre>
+SELECT *
+FROM log_in_attempts
+WHERE login_time > '18:00'
+  AND success = FALSE;
+        </pre>
+
+        <h2>Explanation</h2>
+        <p>The query retrieves all records from the <code>log_in_attempts</code> table where:</p>
+        <ul>
+            <li>The <code>login_time</code> is after 18:00.</li>
+            <li>The <code>success</code> column is marked as <code>FALSE</code> (indicating failed attempts).</li>
+        </ul>
+        <p>This helps narrow down the data to investigate potential after-hours breaches.</p>
+
+        <h2>Results</h2>
+        <p>The query returned multiple failed login attempts that occurred after 18:00. These results were further analyzed to identify patterns and potential unauthorized access.</p>
+
+        <h2>Impact</h2>
+        <p>This analysis enabled the organization to:</p>
+        <ul>
+            <li>Identify unusual login patterns after hours.</li>
+            <li>Implement stricter access controls for off-hour activities.</li>
+        </ul>
+
+        <a href="index.html">&larr; Back to Portfolio</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>
